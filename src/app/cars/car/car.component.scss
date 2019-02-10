@@ -1,0 +1,103 @@
+$break-sm: 40em;
+$break-md: 52em;
+$break-lg: 64em;
+
+.car-wrapper {
+    width: 380px;
+    padding: 0;
+    display: inline-block;
+    margin-right: 10px;
+    font-family: sans-serif;
+
+    &:hover{
+        cursor: pointer;
+        border: 1px solid #fff;
+    }
+
+    @media (min-width: $break-md) {
+        width: 400px;
+        margin-right: 0;
+        margin-bottom: 40px;
+        margin-top: 20px;
+        vertical-align: top;
+    }
+
+    .imgArea {
+        display: inline-block;
+        width: 170px;
+        vertical-align: top;
+        height: 130px;
+
+        @media (min-width: $break-md) {
+            width: 400px;
+            display: block;
+            height: auto;
+        }
+
+        img {
+            width: 170px;
+            height: 130px;
+            @media (min-width: $break-md) {
+                width: 400px;
+                height: auto;
+            }
+        }
+    }
+
+    .textArea{
+        display: inline-block;
+        width: 200px;
+        border-top: 1px solid #c0c0c0;
+
+        @media (min-width: $break-md) {
+            width: 400px;
+            display: block;
+            border-top: none;
+        }
+
+        .title{
+            padding-top: 10px;
+            display: block;
+            text-align: left;
+            padding-left: 10px;
+
+            @media (min-width: $break-md){
+                text-align: center;
+                padding-left: 0;
+            }
+            label {
+                border-top: 0;
+                border-bottom: 0;
+                display: inline-block;
+                font-size: 16px;
+                color: #000000;
+                font-weight: 700;
+                text-transform: uppercase;
+
+                @media (min-width: $break-md){
+                    text-align: center;
+                    padding-left: 0;
+                    border-top: 1px solid #000000;
+                    border-bottom: 1px solid #000000;
+                }
+            }
+        }
+
+        .price, .description {
+            padding-top: 10px;
+            display: block;
+            text-align: left;
+            font-size: 12px;
+            color: #000000;
+            font-weight: 100;
+            padding-left: 10px;
+            padding-right: 0;
+            @media (min-width: $break-md){
+                padding-top: 15px;
+                text-align: center;
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+        }
+    }
+}
