@@ -1,4 +1,5 @@
 import { AppPage } from './app.po';
+import { browser } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -9,6 +10,14 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to jaguar!');
+    browser.sleep(4000);
+    expect(page.getTitleText()).toEqual('Jaguar Car List!');
   });
+
+  it("should display in mobile view format", ()=>{
+    browser.manage().window().setSize(320, 680);
+    page.navigateTo();
+    browser.sleep(4000);
+    expect(page.getTitleText()).toEqual('Jaguar Car List!');
+  })
 });
