@@ -1,24 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarComponent } from './cars/car/car.component';
 import { CarListComponent } from './cars/car-list/car-list.component';
-import { CarDetailComponent } from './cars/car-detail/car-detail.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarComponent,
-    CarListComponent,
-    CarDetailComponent
+    CarListComponent
   ],
   imports: [
+    HttpClientModule ,
     BrowserModule,
-    AppRoutingModule
+    CommonModule
   ],
-  providers: [],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
