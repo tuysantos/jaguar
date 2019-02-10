@@ -22,11 +22,11 @@ export class CarComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(){
-    this.modelId = this.car.id;
-    this.image = this.car.media[0].url;
-    this.title = `${this.car.media[0].name} ${this.car.modelYear}`;
-    this.price = `From ${this.car.carDetail.price}`;
-    this.description = this.car.carDetail.description;
-  }
+      this.modelId = this.car.id;
+      this.image = this.car.media[0].url;
+      this.title = `${this.car.media[0].name} ${this.car.modelYear}`;
+      this.price = `From ${this.car.carDetail.price}`;
+      this.description = this.car.carDetail.description;
+    }
 
  }

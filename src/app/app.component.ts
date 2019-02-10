@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 
 import { CarService } from './core/car.service';
-import { ICar, ICarDetail } from './cars/shared/car.model';
+import { ICar } from './cars/shared/car.model';
 
 @Component({
   selector: 'app-root',
@@ -11,19 +11,12 @@ import { ICar, ICarDetail } from './cars/shared/car.model';
 })
 export class AppComponent implements OnInit {
   title = 'Jaguar Car List';
-
-  detailMode: boolean = false;
   cars: ICar[] = [];
-  carDetail: ICarDetail;
 
   constructor(private carService: CarService) { }
 
   ngOnInit() {
-    this.loadCars()
-  }
-
-  setMode(mode: boolean): void {
-      this.detailMode = mode;
+    this.loadCars();
   }
 
   loadCars() {

@@ -6,9 +6,7 @@
 </div>
 
 <div class="container car-wrapper">
-  <app-car-list [hidden]="detailMode"
-      [carList]="cars"
-      (carEventClick)="displayDetails($event)"
-      (listModeEvent)="setMode($event)">
+  <app-car-list
+      [carList]="cars">
   </app-car-list>
 </div>
