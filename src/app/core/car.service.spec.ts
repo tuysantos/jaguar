@@ -25,27 +25,30 @@ describe('Car Service', ()=>{
         httpMock.verify();
       });
 
-      xit('should successfully get all cars', (done) => {
-        carService.getCars()
-                       .subscribe(res => {
-                         expect(res.length).toEqual(3);
-                         expect(res).toEqual(carsMock);
-                         done();
-                         
-                       });
-    
-        let req1 = httpMock.expectOne(`${environment.apiEndPoint}/vehicles/`);
-        expect(req1.request.method).toEqual('GET');
-        req1.flush(carsMock);
+    it('should successfully get all cars',
+        inject([HttpTestingController, CarService],
+            (httpMock: HttpTestingController, service: CarService) => {
+                service.getCars().subscribe(res => {
+                    expect(res.length).toEqual(3);
+                    expect(res).toEqual(carsMock); 
+                });
 
-        let req2 = httpMock.expectOne(`${environment.apiEndPoint}/vehicles/`);
-        expect(req2.request.method).toEqual('GET');
-        req2.flush(carsMock);
-
-        let req3 = httpMock.expectOne(`${environment.apiEndPoint}/vehicles/`);
-        expect(req3.request.method).toEqual('GET');
-        req3.flush(carsMock);
-      });
+            const req = httpMock.expectOne(`${environment.apiEndPoint}/vehicles/`);
+            expect(req.request.method).toEqual('GET');
+            req.flush(carsMock);
+            const req1 = httpMock.expectOne(`${environment.apiEndPoint}/vehicle/xe`);
+            const req2 = httpMock.expectOne(`${environment.apiEndPoint}/vehicle/xf`);
+            const req3 = httpMock.expectOne(`${environment.apiEndPoint}/vehicle/xj`);
+            
+            expect(req1.request.method).toEqual('GET');
+            expect(req2.request.method).toEqual('GET');
+            expect(req3.request.method).toEqual('GET');
+            
+            req1.flush(carsMock[0].carDetail);
+            req2.flush(carsMock[1].carDetail);
+            req3.flush(carsMock[2].carDetail);
+            })
+    );
 
     it('should successfully get car model',
         inject([HttpTestingController, CarService],
@@ -58,7 +61,7 @@ describe('Car Service', ()=>{
 
             const req = httpMock.expectOne(`${environment.apiEndPoint}/vehicle/xe`);
             expect(req.request.method).toEqual('GET');
-                req.flush(carsMock[0].carDetail);
+            req.flush(carsMock[0].carDetail);
             })
     );
 });
